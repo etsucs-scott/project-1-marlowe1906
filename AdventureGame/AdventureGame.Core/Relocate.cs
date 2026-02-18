@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AdventureGame.Core
+{
+    // Handles validating movement and updating player position
+    internal class Relocate
+    {
+        // Determines what exists at the new location
+        // Returns a string representing the type of tile encountered
+        public string check(string mapData, int currentLocation, int newLocation)
+        {
+            if (mapData[newLocation] == 'M')
+            {
+                return "A"; // Monster encounter
+            }
+            else if (mapData[newLocation] == 'I')
+            {
+                return "Potion"; // Health potion
+            }
+            else if (mapData[newLocation] == '#')
+            {
+                return "Wall!"; // Wall tile
+            }
+            else if (newLocation < 0 || newLocation > mapData.Length)
+            {
+                return "Cant go there"; // Out-of-bounds protection
+            }
+            else if (mapData[newLocation] == 'S')
+            {
+                return "S"; // Weapon upgrade
+            }
+            else if (mapData[newLocation] == 'E')
+            {
+                return "Exit"; // Exit tile
+            }
+            else
+            {
+                return "Good"; // Empty tile
+            }
+        }
+
+        // Executes movement logic based on what is at the new location
+        public void relocate(string mapData, int currentLocation, int newLocation, char[] splitMap, Player p)
+        {
+            Attack attack = new Attack();
+            MonsterCheck monsters = new MonsterCheck();
+            Potion potion = new Potion();
+
+            // Normal movement onto empty tile
+            if (check(mapData, currentLocation, newLocation) == "Good")
+            {
+                splitMap[currentLocation] = '.';
+                splitMap[newLocation] = 'P';
+            }
+            // Potion pickup
+            else if (check(mapData, currentLocation, newLocation) == "Potion")
+            {
+                potion.retrieve(p);
+                splitMap[currentLocation] = '.';
+                splitMap[newLocation] = 'P';
+            }
+            // Monster encounter triggers combat
+            else if (check(mapData, currentLocation, newLocation) == "A")
+            {
+                string result = attack.sequence(p);
+
+                // Player moves only if they win the battle
+                if (result == "Win")
+                {
+                    splitMap[currentLocation] = '.';
+                    splitMap[newLocation] = 'P';
+                }
+                else
+                {
+                    // Player remains in place if they lose
+                    splitMap[currentLocation] = 'P';
+                    splitMap[newLocation] = '.';
+                }
+            }
+            // Weapon upgrade tile
+            else if (check(mapData, currentLocation, newLocation) == "S")
+            {
+                Console.WriteLine("You found a weapon! +10 attack power!");
+                splitMap[currentLocation] = '.';
+                splitMap[newLocation] = 'P';
+                p.AttackPower += 10;
+            }
+            // Exit tile logic
+            else if (check(mapData, currentLocation, newLocation) == "Exit")
+            {
+                // Player cannot exit if monsters still exist on the map
+                if (monsters.checkForMonsters(mapData) == true)
+                {
+                    Console.WriteLine("You cant escape yet! There are still monsters!");
+                }
+                else
+                {
+                    Console.WriteLine("Hooray, you have escaped the level!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("You cant move there");
+            }
+        }
+    }
+}

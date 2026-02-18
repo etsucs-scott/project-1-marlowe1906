@@ -1,0 +1,43 @@
+﻿Adventure Game – Player Instructions
+Objective:
+Explore the room, defeat monsters, collect potions and weapons, and reach the exit.
+
+Controls:
+W - Move Up
+S - Move Down
+A - Move Left
+D - Move Right
+
+Tile Types:
+.	Empty floor — move freely
+#	Wall — cannot pass
+P	Player start position
+E	Exit — finish the level (only if all monsters defeated)
+M	Monster — triggers a battle
+I	Potion — restores 10 health
+S	Weapon — increases attack power by 10
+
+Battles use a number guessing mini-game:
+Guess a number between 1–10.
+Outcome depends on your guess vs. the monster’s guess.
+
+Battle Outcomes:
+Perfect hit - defeat monster instantly
+Player hits - monster loses health
+Monster hits - player loses health
+Both counter - nothing happens
+
+Player loses if health drops to 0.
+Player wins if monster’s health reaches 0.
+
+Tips
+Pick up potions (I) to stay alive.
+Upgrade attack power (S) to defeat monsters faster.
+You cannot exit (E) until all monsters are defeated.
+The room is bordered by # — walls block movement.
+
+Winning:
+Defeat all monsters and move to the exit (E) to complete the level.
+
+Losing:
+If your health reaches 0 in battle, the game ends.
