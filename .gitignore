@@ -53,3 +53,7 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /.vs
+<<<<<<< HEAD
+/AdventureGame/.vs/AdventureGame
+=======
+>>>>>>> 9c520b907dbdbfc084f897e372851ef92078ef7c
