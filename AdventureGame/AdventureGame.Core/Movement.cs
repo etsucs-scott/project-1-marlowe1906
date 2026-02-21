@@ -68,6 +68,7 @@ namespace AdventureGame.Core
             // If the player did not move onto the exit tile, regenerate the room display
             if (relocate.check(mapData, currentLocation, newLocation) != "Exit")
             {
+                Console.Clear();
                 room.Generate(newData, 10, 10);
             }
 

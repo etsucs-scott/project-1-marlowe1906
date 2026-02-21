@@ -28,6 +28,7 @@ namespace AdventureGame.Core
             m.AttackPower = 10;
 
             bool battle = true;
+            Console.Clear();
 
             while (battle == true)
             {

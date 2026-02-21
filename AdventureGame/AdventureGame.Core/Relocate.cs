@@ -71,12 +71,14 @@ namespace AdventureGame.Core
                 // Player moves only if they win the battle
                 if (result == "Win")
                 {
+                    Console.Clear();
                     splitMap[currentLocation] = '.';
                     splitMap[newLocation] = 'P';
                 }
+                // Player remains in place if they lose
                 else
                 {
-                    // Player remains in place if they lose
+                    Console.Clear();
                     splitMap[currentLocation] = 'P';
                     splitMap[newLocation] = '.';
                 }
