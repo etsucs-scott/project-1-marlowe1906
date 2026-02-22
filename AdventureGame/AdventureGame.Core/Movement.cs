@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,22 +35,22 @@ namespace AdventureGame.Core
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             // Calculate new position based on WASD input
-            if (key.Key == ConsoleKey.W)
+            if (key.Key == ConsoleKey.W || key.Key == ConsoleKey.UpArrow)
             {
                 newLocation = currentLocation - width; // Move up
                 relocate.relocate(mapData, currentLocation, newLocation, splitMap, p);
             }
-            else if (key.Key == ConsoleKey.S)
+            else if (key.Key == ConsoleKey.S || key.Key == ConsoleKey.DownArrow)
             {
                 newLocation = currentLocation + width; // Move down
                 relocate.relocate(mapData, currentLocation, newLocation, splitMap, p);
             }
-            else if (key.Key == ConsoleKey.D)
+            else if (key.Key == ConsoleKey.D || key.Key == ConsoleKey.RightArrow)
             {
                 newLocation = currentLocation + 1; // Move right
                 relocate.relocate(mapData, currentLocation, newLocation, splitMap, p);
             }
-            else if (key.Key == ConsoleKey.A)
+            else if (key.Key == ConsoleKey.A || key.Key == ConsoleKey.LeftArrow)
             {
                 newLocation = currentLocation - 1; // Move left
                 relocate.relocate(mapData, currentLocation, newLocation, splitMap, p);
