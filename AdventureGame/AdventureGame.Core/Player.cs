@@ -14,6 +14,7 @@ namespace AdventureGame.Core
         public string Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
+        public List<string> inventory = new List<string>() { "Wood Sword" };
 
         // Executes an attack on another character
         // Uses polymorphism since the target can be any ICharecter

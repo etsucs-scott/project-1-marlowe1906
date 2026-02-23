@@ -70,11 +70,6 @@ namespace AdventureGame.Core
                         Console.Write(choice);
                         mapData += "#";
                     }
-                    else if (choice == "S")
-                    {
-                        Console.Write(choice);
-                        mapData += "S";
-                    }
                     else if (choice == "I")
                     {
                         Console.Write("I");

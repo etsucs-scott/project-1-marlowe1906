@@ -24,12 +24,10 @@ namespace AdventureGame.Core
             {
                 case 0:
                     return "M"; // Monster
-                case 1:
-                    return "S"; // Sword / weapon upgrade
-                case 2:
+                case 1 or 2:
                     return "#"; // Wall
-                case 3:
-                    return "I"; // Potion / item
+                case 3 or 4:
+                    return "I"; // Potion / item / weapon
             }
 
             // All other values return an empty floor tile

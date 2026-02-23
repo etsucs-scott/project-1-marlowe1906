@@ -15,11 +15,14 @@ namespace AdventureGame.Core
             Attack attack = new Attack();
             MonsterCheck monsters = new MonsterCheck();
             Potion potion = new Potion();
+            Random random = new Random();
+            WeaponChance weapon = new WeaponChance();
 
             // Normal movement onto empty tile
             if (newLocation < 0 || newLocation >= mapData.Length)
             {
-                Console.WriteLine("Cant go there");
+                Console.WriteLine("Cant go there!");
+                Console.WriteLine();
                 
             }
             // OOB protection
@@ -31,7 +34,15 @@ namespace AdventureGame.Core
             // Potion pickup
             else if (mapData[newLocation] == 'I')
             {
-                potion.retrieve(p);
+                int choice = random.Next(0, 2);
+                if (choice == 0)
+                {
+                    potion.retrieve(p);
+                }
+                else
+                {
+                    weapon.choose(mapData, currentLocation, newLocation, splitMap, p);
+                }
                 splitMap[currentLocation] = '.';
                 splitMap[newLocation] = 'P';
             }
@@ -55,14 +66,6 @@ namespace AdventureGame.Core
                     splitMap[newLocation] = '.';
                 }
             }
-            // Weapon upgrade tile
-            else if (mapData[newLocation] == 'S')
-            {
-                Console.WriteLine("You found a weapon! +10 attack power!");
-                splitMap[currentLocation] = '.';
-                splitMap[newLocation] = 'P';
-                p.AttackPower += 10;
-            }
             // Exit tile logic
             else if (mapData[newLocation] == 'E')
             {
@@ -70,10 +73,12 @@ namespace AdventureGame.Core
                 if (monsters.checkForMonsters(mapData) == true)
                 {
                     Console.WriteLine("You cant escape yet! There are still monsters!");
+                    Console.WriteLine();
                 }
                 else
                 {
-                    Console.WriteLine("Hooray, you have escaped the level!");
+                    Console.WriteLine("Hooray, you won!");
+                    Console.WriteLine();
                 }
             }
             else

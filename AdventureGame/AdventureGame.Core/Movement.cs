@@ -30,9 +30,9 @@ namespace AdventureGame.Core
             {
                 return "Completed";
             }
-
             // Read movement input without displaying the pressed key
             ConsoleKeyInfo key = Console.ReadKey(true);
+            Console.Clear();
 
             // Calculate new position based on WASD input
             if (key.Key == ConsoleKey.W || key.Key == ConsoleKey.UpArrow)
@@ -40,6 +40,24 @@ namespace AdventureGame.Core
                 newLocation = currentLocation - width; // Move up
                 relocate.relocate(mapData, currentLocation, newLocation, splitMap, p);
             }
+            else if (key.Key == ConsoleKey.E)
+            {
+                Console.WriteLine("Inventory: ");
+                foreach (string item in p.inventory)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine();
+            }
+            else if (key.Key == ConsoleKey.Q)
+            {
+                Console.WriteLine("Stats:");
+                Console.WriteLine($"Attack power: {p.AttackPower}");
+                Console.WriteLine($"Health: {p.Health}");
+                Console.WriteLine();
+            }
+
+
             else if (key.Key == ConsoleKey.S || key.Key == ConsoleKey.DownArrow)
             {
                 newLocation = currentLocation + width; // Move down
@@ -59,8 +77,6 @@ namespace AdventureGame.Core
             {
                 Console.WriteLine("Please use WASD or arrow keys to move around");
             }
-            Console.WriteLine(newLocation.ToString());
-            Console.WriteLine(currentLocation.ToString());
             // Rebuild the updated map string from the modified character array
             for (int i = 0; i < splitMap.Length; i++)
             {
@@ -70,7 +86,6 @@ namespace AdventureGame.Core
             // If the player did not move onto the exit tile, regenerate the room display
             if (mapData[currentLocation] != 'E')
             {
-                Console.Clear();
                 room.Generate(newData, 10, 10);
             }
 
