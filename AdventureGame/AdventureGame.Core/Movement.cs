@@ -57,9 +57,10 @@ namespace AdventureGame.Core
             }
             else
             {
-                Console.WriteLine("Please use WASD to move around");
+                Console.WriteLine("Please use WASD or arrow keys to move around");
             }
-
+            Console.WriteLine(newLocation.ToString());
+            Console.WriteLine(currentLocation.ToString());
             // Rebuild the updated map string from the modified character array
             for (int i = 0; i < splitMap.Length; i++)
             {
@@ -67,7 +68,7 @@ namespace AdventureGame.Core
             }
 
             // If the player did not move onto the exit tile, regenerate the room display
-            if (relocate.check(mapData, currentLocation, newLocation) != "Exit")
+            if (mapData[currentLocation] != 'E')
             {
                 Console.Clear();
                 room.Generate(newData, 10, 10);
