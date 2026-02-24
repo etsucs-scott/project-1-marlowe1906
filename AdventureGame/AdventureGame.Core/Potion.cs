@@ -13,6 +13,7 @@ namespace AdventureGame.Core
         public void retrieve(Player p)
         {
             Console.WriteLine("You found a potion! +10 Health!");
+            Console.WriteLine();
 
             // Directly modifies the passed Player object (same reference)
             p.Health += 10;

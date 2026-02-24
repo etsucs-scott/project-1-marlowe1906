@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,9 @@ namespace AdventureGame.Core
             Random random = new Random();
             Monster m = new Monster();
 
+            
+            // Half second timer
+
             // Initialize monster stats for this battle
             m.Health = 100;
             m.AttackPower = 10;
@@ -32,55 +36,56 @@ namespace AdventureGame.Core
 
             while (battle == true)
             {
-                int guess = random.Next(1, 11);
-                int monsterGuess = random.Next(1, 11);
+                int time = random.Next(500,1000);
+
+                Console.Clear();
+                Console.WriteLine("Get ready to attack!");
+
+                Thread.Sleep(time);
+
+                
+                Console.WriteLine("ATTACK NOW!");
+
+                Stopwatch timer = Stopwatch.StartNew();
+
+                bool attacked = false;
+
+                while (timer.ElapsedMilliseconds < 500)
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        Console.ReadKey(true); // consume the key press
+                        Console.WriteLine($"You hit the monster! You did {p.AttackPower} Damage!");
+                        m.Health -= p.AttackPower;
+                        attacked = true;
+                        break;
+                    }
+                }
+
+                if (!attacked)
+                {
+                    Console.WriteLine("Not quite fast enough! The monster got you!");
+                    p.Health -= m.AttackPower;
+                }
 
                 Console.WriteLine();
-                Console.WriteLine("Pick a number between 1 and 10");
+                Console.WriteLine(stats(p, m));
+                Console.WriteLine();
 
-                int userGuess = int.Parse(Console.ReadLine());
+                Console.WriteLine("Press any key to continue!");
+                Console.ReadKey();
 
-                if (userGuess == guess)
+                if (m.Health <= 0)
                 {
-                    Console.WriteLine("Wow a perfect hit! You one shot your opponent!");
-                    Console.WriteLine(stats(p, m));
-                    battle = false;
                     return "Win";
+                    break;
                 }
-                else if (userGuess == monsterGuess)
+                else if (p.Health <= 0)
                 {
-                    Console.WriteLine("You and the monster both countered eachother at the same time! Nothing happens!");
-                    Console.WriteLine(stats(p, m));
-                }
-                // Compares guess differences to decide who lands the hit
-                else if ((userGuess - guess) > (monsterGuess - guess))
-                {
-                    Console.WriteLine("You hit the monster!");
-                    m.takeDamage(p.AttackPower);
-                    Console.WriteLine(stats(p, m));
-                }
-                else
-                {
-                    Console.WriteLine("The monster hit you!");
-                    p.takeDamage(m.AttackPower);
-                    Console.WriteLine(stats(p, m));
-                }
-
-                // Check win/lose conditions
-                if (p.Health <= 0)
-                {
-                    Console.WriteLine("YOU DIED");
-                    battle = false;
                     return "Lose";
-                }
-                else if (m.Health <= 0)
-                {
-                    Console.WriteLine("You beat the monster!");
-                    battle = false;
-                    return "Win";
+                    break;
                 }
             }
-
             return "Incomplete Battle";
         }
     }

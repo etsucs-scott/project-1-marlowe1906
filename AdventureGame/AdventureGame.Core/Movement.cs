@@ -76,6 +76,7 @@ namespace AdventureGame.Core
             else
             {
                 Console.WriteLine("Please use WASD or arrow keys to move around");
+                Console.WriteLine();
             }
             // Rebuild the updated map string from the modified character array
             for (int i = 0; i < splitMap.Length; i++)
