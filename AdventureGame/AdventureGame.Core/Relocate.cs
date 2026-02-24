@@ -49,7 +49,15 @@ namespace AdventureGame.Core
             // Monster encounter triggers combat
             else if (mapData[newLocation] == 'M')
             {
-                string result = attack.sequence(p);
+                string result;
+                if (monsters.checkForMonsters(mapData) == 1)
+                {
+                    result = attack.hardSequence(p);
+                }
+                else
+                {
+                    result = attack.easySequence(p);
+                }
 
                 // Player moves only if they win the battle
                 if (result == "Win")
@@ -70,15 +78,17 @@ namespace AdventureGame.Core
             else if (mapData[newLocation] == 'E')
             {
                 // Player cannot exit if monsters still exist on the map
-                if (monsters.checkForMonsters(mapData) == true)
+                if (monsters.checkForMonsters(mapData) != 0)
                 {
                     Console.WriteLine("You cant escape yet! There are still monsters!");
                     Console.WriteLine();
                 }
                 else
                 {
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.Green;
                     Console.WriteLine("Hooray, you won!");
-                    Console.WriteLine();
+                    
                 }
             }
             else

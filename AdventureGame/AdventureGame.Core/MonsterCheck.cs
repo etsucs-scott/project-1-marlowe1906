@@ -11,19 +11,20 @@ namespace AdventureGame.Core
     {
         // Scans the map string for the 'M' character
         // Returns true if at least one monster is found
-        public bool checkForMonsters(string mapData)
+        public int checkForMonsters(string mapData)
         {
+            int monsters = 0;
             for (int i = 0; i < mapData.Length; i++)
             {
                 // If a monster tile is detected
                 if (mapData[i] == 'M')
                 {
-                    return true;
+                    monsters ++;
                 }
             }
 
             // No monsters were found in the map
-            return false;
+            return 0;
         }
     }
 }
