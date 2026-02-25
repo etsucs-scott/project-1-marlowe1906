@@ -1,43 +1,44 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/2QC0Bpz-)
-# CSCI 1260 — Project
+Adventure Game – Player Instructions
+Objective:
+Explore the room, defeat monsters, collect potions and weapons, and reach the exit.
 
-## Project Instructions
-All project requirements, grading criteria, and submission details are provided on **D2L**.  
-Refer to D2L as the *authoritative source* for this assignment.
+Controls:
+W - Move Up
+S - Move Down
+A - Move Left
+D - Move Right
+E - Inventory
+Q - Player stats
 
-This repository is intentionally minimal. You are responsible for:
-- Creating the solution and projects
-- Designing the class structure
-- Implementing the required functionality
+Tile Types:
+.	Empty floor — move freely
+#	Wall — cannot pass
+P	Player start position
+E	Exit — finish the level (only if all monsters defeated)
+M	Monster — triggers a battle
+I	Item — Can be a potion that restores 10 health / Can be a sword with different damage amounts 
 
----
+Battles sequence using reflexes:
+Wait until prompted to attack then press any key to attack the monster
+If you dont attack fast enough, the monster will attack you 
+Defeat the monster before it can attack you!
 
-## Getting Started (CLI)
+Player loses if health drops to 0 or lower.
+Player wins if monster’s health reaches 0 or less.
 
-You may use **Visual Studio**, **VS Code**, or the **terminal**.
+Winning:
+Defeat all monsters and move to the exit (E) to complete the level.
 
-### Create a solution
-```bash
-dotnet new sln -n ProjectName
-```
+Losing:
+If your health reaches 0 in battle, the game ends.
 
-### Create a project (example: console app)
-```bash
-dotnet new console -n ProjectName.App
-```
+Run instruction:
+1 - .NET SDK installed (recommended .NET 6 or newer) or A C# IDE such as:
+ - Visual Studio OR
+ - Visual Studio Code with C# extension OR
+ - Rider
 
-### Add the project to the solution
-```bash
-dotnet sln add ProjectName.App
-```
-
-### Build and run
-```bash
-dotnet build
-dotnet run --project ProjectName.App
-```
-
-## Notes
-- Commit early and commit often.
-- Your repository history is part of your submission.
-- Update this README with build/run instructions specific to your project.
+Using cmd prompt:
+2 - cd YourGameFolder
+3 - dotnet build
+4 - dotnet run --project src/AdventureGame.Console
