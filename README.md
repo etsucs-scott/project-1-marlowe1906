@@ -1,4 +1,3 @@
-**
 Adventure Game – Player Instructions
 Objective:
 Explore the room, defeat monsters, collect potions and weapons, and reach the exit.
@@ -34,13 +33,12 @@ Losing:
 If your health reaches 0 in battle, the game ends.
 
 Run instruction:
-1 - .NET SDK installed (recommended .NET 6 or newer) or A C# IDE such as:
+ 1 - .NET SDK installed (recommended .NET 6 or newer) or A C# IDE such as:
  - Visual Studio OR
  - Visual Studio Code with C# extension OR
  - Rider
 
 Using cmd prompt:
-2 - cd YourGameFolder
-3 - dotnet build
-4 - dotnet run --project src/AdventureGame.Console
-**
+ 2 - cd YourGameFolder
+ 3 - dotnet build
+ 4 - dotnet run --project src/AdventureGame.Console
