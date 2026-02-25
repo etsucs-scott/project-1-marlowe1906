@@ -1,3 +1,4 @@
+**
 Adventure Game – Player Instructions
 Objective:
 Explore the room, defeat monsters, collect potions and weapons, and reach the exit.
@@ -42,3 +43,4 @@ Using cmd prompt:
 2 - cd YourGameFolder
 3 - dotnet build
 4 - dotnet run --project src/AdventureGame.Console
+**
