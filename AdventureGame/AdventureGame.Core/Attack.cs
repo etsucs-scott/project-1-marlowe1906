@@ -34,7 +34,7 @@ namespace AdventureGame.Core
             Monster m = new Monster();
 
             // Initialize monster stats for this battle
-            m.Health = 100;
+            m.Health = 30;
             m.AttackPower = 10;
 
             bool battle = true;
@@ -102,7 +102,7 @@ namespace AdventureGame.Core
             Monster m = new Monster();
 
             // Initialize monster stats for this battle
-            m.Health = 100;
+            m.Health = 50;
             m.AttackPower = 30;
 
             bool battle = true;

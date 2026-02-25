@@ -80,8 +80,7 @@ namespace AdventureGame.Core
                 // Player cannot exit if monsters still exist on the map
                 if (monsters.checkForMonsters(mapData) != 0)
                 {
-                    Console.WriteLine("You cant escape yet! There are still monsters!");
-                    Console.WriteLine();
+                    Console.Write("You cant escape yet! There are still monsters!");
                 }
                 else
                 {
@@ -93,7 +92,7 @@ namespace AdventureGame.Core
             }
             else
             {
-                Console.WriteLine("You cant move there");
+                Console.Write("You cant move there");
             }
         }
     }

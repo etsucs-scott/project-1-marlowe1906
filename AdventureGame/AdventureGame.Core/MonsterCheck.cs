@@ -24,7 +24,7 @@ namespace AdventureGame.Core
             }
 
             // No monsters were found in the map
-            return 0;
+            return monsters;
         }
     }
 }

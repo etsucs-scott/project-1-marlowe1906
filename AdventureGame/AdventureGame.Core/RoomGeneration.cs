@@ -24,6 +24,9 @@ namespace AdventureGame.Core
             exitTileX = random.Next(0, height);
             exitTileY = random.Next(0, width);
 
+            Console.WriteLine();
+            Console.WriteLine();
+
             // Draw top border
             for (int i = 0; i <= width + 1; i++)
             {

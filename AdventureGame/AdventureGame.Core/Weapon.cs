@@ -10,8 +10,7 @@ namespace AdventureGame.Core
     {
         public void ironSword(Player p)
         {
-            Console.WriteLine("You found an Iron Sword! Use this sword to deal 20 damage to monsters!");
-            Console.WriteLine();
+            Console.Write("You found an Iron Sword! Use this sword to deal 20 damage to monsters!");
             if (p.AttackPower < 20)
             {
                 p.AttackPower = 20;
@@ -20,8 +19,7 @@ namespace AdventureGame.Core
         }
         public void goldSword(Player p)
         {
-            Console.WriteLine("You found a Gold Sword! Use this sword to deal 30 damage to monsters!");
-            Console.WriteLine();
+            Console.Write("You found a Gold Sword! Use this sword to deal 30 damage to monsters!");
             p.AttackPower = 30;
             if (p.AttackPower < 30)
             {
@@ -31,8 +29,7 @@ namespace AdventureGame.Core
         }
         public void diamondSword(Player p)
         {
-            Console.WriteLine("You found a Diamond Sword! Use this sword to deal 40 damage to monsters!");
-            Console.WriteLine();
+            Console.Write("You found a Diamond Sword! Use this sword to deal 40 damage to monsters!");
             if (p.AttackPower < 40)
             {
                 p.AttackPower = 40;

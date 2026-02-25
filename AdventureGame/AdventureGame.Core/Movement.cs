@@ -26,7 +26,7 @@ namespace AdventureGame.Core
             string newData = "";
 
             // If player is not found, the game is considered completed
-            if (currentLocation == -1)
+            if (currentLocation == -1 || p.Health <= 0)
             {
                 return "Completed";
             }
@@ -47,14 +47,12 @@ namespace AdventureGame.Core
                 {
                     Console.WriteLine(item);
                 }
-                Console.WriteLine();
             }
             else if (key.Key == ConsoleKey.Q)
             {
                 Console.WriteLine("Stats:");
                 Console.WriteLine($"Attack power: {p.AttackPower}");
-                Console.WriteLine($"Health: {p.Health}");
-                Console.WriteLine();
+                Console.Write($"Health: {p.Health}");
             }
 
 
@@ -75,8 +73,7 @@ namespace AdventureGame.Core
             }
             else
             {
-                Console.WriteLine("Please use WASD or arrow keys to move around");
-                Console.WriteLine();
+                Console.Write("Please use WASD or arrow keys to move around");
             }
             // Rebuild the updated map string from the modified character array
             for (int i = 0; i < splitMap.Length; i++)
@@ -87,6 +84,8 @@ namespace AdventureGame.Core
             // If the player did not move onto the exit tile, regenerate the room display
             if (mapData[currentLocation] != 'E')
             {
+                Console.WriteLine(); 
+                Console.WriteLine();
                 room.Generate(newData, 10, 10);
             }
 

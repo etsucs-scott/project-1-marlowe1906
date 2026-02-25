@@ -12,11 +12,22 @@ namespace AdventureGame.Core
         // Increases the player's health when the potion is collected
         public void retrieve(Player p)
         {
-            Console.WriteLine("You found a potion! +10 Health!");
-            Console.WriteLine();
 
             // Directly modifies the passed Player object (same reference)
-            p.Health += 10;
+            if (p.Health <= 130 && p.Health > 0)
+            {
+                Console.Write("You found a potion! +20 Health!");
+                p.Health += 20;
+            }
+            else if (p.Health <= 149 && p.Health >130)
+            {
+                Console.Write("You've reached max health!");
+                p.Health = 150;
+            }
+            else
+            {
+                Console.Write("You're already at max health!");
+            }
         }
     }
 }
